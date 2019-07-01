@@ -15,22 +15,50 @@
       <a class="navbar-brand" href="#">Simulador GBN (Go - Back - N)</a>
     </nav>
   </header>
-  <main> 
+  <main>
     <div class="container-fluid">
       <section class="simulador">
         <div class="row">
-          <div class="col-md-12" style="height: 400px">
-            <h2>Aqui va el simulador</h2>
-          </div>
-        </div>
-      </section>
-      <section class="legenda">
-        <div class="row">
-          <div class="col-md-4 bg-primary">
-            <h2>Aqui va la legenda</h2>
-          </div>
-          <div class="col-md-8 bg-warning">
-            <h2>Algunas configuraciones de entrada al usuario (Por configurar)</h2>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-12 bg-warning">
+                    <h3>Configuración</h3>
+                    <form>
+                      <div class="form-group">
+                        <label for="tamanioVentana" class="font-weight-bold">Tamaño de ventana</label>
+                        <input type="range" class="custom-range" min="1" max="10" step="1" id="tamanioVentana">
+                        <small id="emailHelp" class="form-text text-muted">Establece el tamaño de la ventana para las ventanas</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="customRange3" class="font-weight-bold">Retrazo de extremo a extremo</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                        <small id="emailHelp" class="form-text text-muted">El tiempo que toma un paquete de una estación a la otra</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="customRange3" class="font-weight-bold">Timeout</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                      </div>
+                      <div class="form-group">
+                        <label for="customRange3" class="font-weight-bold">Número de paquetes emitidos por minuto</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                        <small id="emailHelp" class="form-text text-muted">El número de paquetes que la capa superior intenta enviar por minuto</small>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Iniciar</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-12 bg-primary">
+                    <h2>Aqui va la legenda</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <h2>Aqui va el simulador</h2>
+              </div>
+            </div>
           </div>
         </div>
       </section>
