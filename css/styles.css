@@ -1,3 +1,23 @@
+.bg-azul {
+  background-color: #000055;
+}
+
+.simulador {
+  height: 91%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.cuadroLegenda {
+  border: 1px solid gray;
+  width: 30px;
+  height: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
 @media (min-width: 768px) {
+  .configuracion { padding-bottom: 6px; }
   
+  .legenda .d-flex p { font-size: 13px; }
 }
