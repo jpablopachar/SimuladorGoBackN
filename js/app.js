@@ -15,4 +15,4 @@ valorNumeroPaquetes.innerHTML = numeroPaquetes.value;
 tamanioVentana.oninput = function () { valorTamanioVentana.innerHTML = this.value; }
 retrazoExtremo.oninput = function () { valorRetrazoExtremo.innerHTML = this.value; }
 timeout.oninput = function () { valorTimeout.innerHTML = this.value; }
-valorNumeroPaquetes.oninput = function () { valorNumeroPaquetes.innerHTML = this.value; }
+numeroPaquetes.oninput = function () { valorNumeroPaquetes.innerHTML = this.value; }
