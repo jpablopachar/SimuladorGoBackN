@@ -19,25 +19,25 @@
     <div class="container-fluid">
       <div class="row" style="height: 93vh;">
         <div class="order-1 order-md-1 col-md-2 flex-grow-1 bg-warning configuracion">
-          <h3>Configuración</h3>
+          <h3 class="mt-2">Configuración</h3>
           <form>
             <div class="form-group">
-              <label for="tamanioVentana" class="font-weight-bold">Tamaño de ventana</label>
+              <label for="tamanioVentana" class="font-weight-bold">Tamaño de ventana: <span id="valorTamanioVentana"></span></label>
               <input type="range" class="custom-range" min="1" max="10" step="1" id="tamanioVentana">
-              <small id="emailHelp" class="form-text text-muted">Establece el tamaño de la ventana para las ventanas</small>
+              <small class="form-text text-muted">Establece el tamaño de la ventana para las ventanas</small>
             </div>
             <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Retrazo de extremo a extremo</label>
-              <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
-              <small id="emailHelp" class="form-text text-muted">El tiempo que toma un paquete de una estación a la otra</small>
+              <label for="customRange3" class="font-weight-bold">Retrazo de extremo a extremo: <span id="valorRetrazoExtremo"></span> ms</label>
+              <input type="range" class="custom-range" min="1000" max="20000" step="500" id="retrazoExtremo">
+              <small class="form-text text-muted">El tiempo que toma un paquete de una estación a la otra</small>
             </div>
             <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Timeout</label>
-              <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+              <label for="customRange3" class="font-weight-bold">Timeout: <span id="valorTimeout"></span></label>
+              <input type="range" class="custom-range" min="1000" max="30000" step="500" id="timeout">
             </div>
             <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Número de paquetes emitidos por minuto</label>
-              <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+              <label for="customRange3" class="font-weight-bold">Número de paquetes emitidos por minuto: <span id="valorNumeroPaquetes"></span></label>
+              <input type="range" class="custom-range" min="1" max="120" step="1" id="numeroPaquetes">
               <small id="emailHelp" class="form-text text-muted">El número de paquetes que la capa superior intenta enviar por minuto</small>
             </div>
             <div class="d-flex justify-content-center">
@@ -46,7 +46,13 @@
           </form>
         </div>
         <div class="order-3 order-md-2 col-md-8 border">
-          <div class="simulador border border-dark">hola</div>
+          <div class="simulador border border-dark">
+            <div id="enviado"></div>
+            <div id="espacio"></div>
+            <div id="recibido"></div>
+            <div class="swindow"></div>
+            <div class="frame"></div>
+          </div>
         </div>
         <div class="order-2 order-md-3 col-md-2 bg-light">
           <h3 class="mt-2">Legenda</h3>
@@ -81,8 +87,9 @@
     </div>
   </main>
   <footer></footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
