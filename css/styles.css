@@ -15,20 +15,23 @@
   margin-right: 8px;
 }
 
-#paq_1{
+/*#paq_1{
   position: absolute;
 	background-color: black;
-	width: 1.5%;
-	padding: 15px 0px;
+	width: 30px;
+  height: 60px;
+	padding: 0px;
 	margin-left: 0%;
   margin-top: 0%;
 	color: white;
-}
+	display: none;
+}*/
 
-#mov_1{
+#paq_1{
 	position: absolute;
-	background-color: red;
-	width: 1.5%;
+	background-color: black;
+	width: 30px;
+  height: 60px;
 	padding: 15px 5px;
 	margin-left: 50%;
 	margin-top: 30%;
@@ -39,11 +42,13 @@
 #paq_2{
   position: absolute;
 	background-color: black;
-	width: 1.5%;
-	padding: 15px 0px;
-	margin-left: 2%;
-  margin-top: 0%;
+	width: 30px;
+  height: 60px;
+	padding: 15px 5px;
+	margin-left: 50%;
+	margin-top: 30%;
 	color: white;
+	display: none;
 }
 
 #paq_3{
@@ -68,6 +73,16 @@
 	100% {left:-48.8%; top:-41%;}
 }	
 
+.dos{
+	animation-name: uno;
+	animation-duration: 8s;
+}
+
+@keyframes dos{
+	0% {left:-48.8%; top:-40%;}
+	50% {left:-48.8%; top:45%;}
+	100% {left:-48.8%; top:-41%;}
+}
 /*.uno_1{
 
 }
