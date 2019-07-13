@@ -18,6 +18,11 @@ $('#form-simulador').click(function (evento) {
 
 function start(){
   s();
+  desactivarFormulario();
+  $('body').on('click', '.paquetes div', function() {
+    // alert($(this).attr('id'));
+    $(this).remove();
+  });
   function s(){
       setTimeout (bs, 800);
   }
@@ -48,6 +53,7 @@ function bs(){
         }else if(tamanioVentana==4){
             ventana_de_4();
         }
+        activarFormulario();
         //alert(tamanioVentana);
     }, false);
 }
@@ -72,10 +78,25 @@ function ventana_de_3(){
         //funcion para comparar.. 
         $('#paq_3').removeClass('tres');  
         $('#paq_3').css("display", "none");
+        activarFormulario();
         //alert(tamanioVentana);
     }, false);
 }
 
 function ventana_de_4(){
 
+}
+
+function desactivarFormulario() {
+  $('input').prop('disabled', true);
+  $('button').text('Pausar');
+}
+
+function activarFormulario() {
+  $('input').prop('disabled', false);
+  $('button').text('Iniciar');
+}
+
+function eliminarPaquete(paquete) {
+  paquete.remove;
 }
