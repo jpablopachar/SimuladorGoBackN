@@ -18,20 +18,20 @@ timeout.oninput = function() { valorTimeout.innerHTML = this.value; }
 numeroPaquetes.oninput = function() { valorNumeroPaquetes.innerHTML = this.value; }
 
 /* Variables globales */
-var corriendo = false;
+/*var corriendo = false;
 var pantalla;
 var contr;
 var emisor;
 var receptor;
 var typewriter = true;
 var finRetrazo = 1000;
-var papel;
+var papel;*/
 
 /* $(document).ready(() => {
   
 }); */
 
-function controlador() {
+/* function controlador() {
   this.getTamanioVentana = function() { return parseInt($('#tamanioVentana').val()); }
   
   this.setTamanioVentana = function() {
@@ -79,4 +79,4 @@ function Pantalla(ventanaN, receptorVentana) {
   // ventanaEmisor
   
   this.temporizadorPaquete = Object();
-}
+} */

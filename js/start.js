@@ -10,11 +10,15 @@ function logica(){
     $('#paq_1').show();
     var conte = document.getElementById('paq_1');
 }*/
+$('#form-simulador').click(function (evento) {
+  evento.preventDefault();
+});
+
 function start(){
-    s();
-    function s(){
-        setTimeout (bs, 800);
-    }
+  s();
+  function s(){
+      setTimeout (bs, 800);
+  }
 }
 
 function bs(){
@@ -26,5 +30,5 @@ function bs(){
         $('#mov_1').removeClass('uno');  
         $('#mov_1').css("display", "none");    
     }, false);
-    
 }
+
