@@ -10,6 +10,8 @@ function logica(){
     $('#paq_1').show();
     var conte = document.getElementById('paq_1');
 }*/
+var valorExtremoAExtremo = document.getElementById('retrazoExtremo');
+
 $('#form-simulador').click(function (evento) {
   evento.preventDefault();
 });
@@ -22,14 +24,20 @@ function start(){
 }
 
 function bs(){
-    alert("hola");
     $('#paq_1').show(); 
     var conte = document.getElementById('paq_1');
+    console.log(valorExtremoAExtremo.value);
     var tamanioVentana = jQuery('#valorTamanioVentana').text();
-    $('#paq_1').addClass('uno');
+    /*$('#paq_1').addClass('uno'); */
+    $('#paq_1').css({
+      'animation-name': 'uno',
+      /*'animation-duration': valorExtremoAExtremo.value + 'ms'*/
+      'animation-duration': valorExtremoAExtremo.value + 'ms',
+      
+    });
     conte.addEventListener("animationend", function(){
         //funcion para comparar.. 
-        $('#paq_1').removeClass('uno');  
+        /* $('#paq_1').removeClass('uno'); */  
         $('#paq_1').css("display", "none");
         if(tamanioVentana==1){
 

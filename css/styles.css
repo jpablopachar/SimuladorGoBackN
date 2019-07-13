@@ -75,15 +75,15 @@
 }
 
 /*animacion css*/
-.uno{
+/*.uno{
 	animation-name: uno;
-	animation-duration: 8s;
-}
+	animation-duration: 10500ms;
+}*/
 
 @keyframes uno{
-	0% {left:-48.8%; top:-40%;}
-	50% {left:-48.8%; top:45%;}
-	100% {left:-48.8%; top:-41%;}
+	0% {left:-47%; top:-37%;}
+	50% {left:-47%; top:45%;}
+	100% {left:-47%; top:-41%;}
 }	
 
 .dos{
