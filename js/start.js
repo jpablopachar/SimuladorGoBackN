@@ -22,6 +22,7 @@ function start(){
 }
 
 function bs(){
+    alert("hola");
     $('#paq_1').show(); 
     var conte = document.getElementById('paq_1');
     var tamanioVentana = jQuery('#valorTamanioVentana').text();
