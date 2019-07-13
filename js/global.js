@@ -1,4 +1,4 @@
-function desactivarFormItems(desactivar, grupo) {
+/* function desactivarFormItems(desactivar, grupo) {
   let grupoClases;
   
   if (typeof grupo == 'undefined') {
@@ -10,4 +10,4 @@ function desactivarFormItems(desactivar, grupo) {
   if (desactivar === true) {
     let e = $('.config .form-item.disable' + grupoClases).addClass('disabled');
   }
-}
+} */
