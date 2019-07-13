@@ -74,14 +74,25 @@
 }	
 
 .dos{
-	animation-name: uno;
+	animation-name: dos;
 	animation-duration: 8s;
 }
 
 @keyframes dos{
-	0% {left:-48.8%; top:-40%;}
-	50% {left:-48.8%; top:45%;}
-	100% {left:-48.8%; top:-41%;}
+	0% {left:-46%; top:-40%;}
+	50% {left:-46%; top:45%;}
+	100% {left:-46%; top:-41%;}
+}
+
+.tres{
+	animation-name: tres;
+	animation-duration: 8s;
+}
+
+@keyframes tres{
+	0% {left:-44%; top:-40%;}
+	50% {left:-44%; top:45%;}
+	100% {left:-44%; top:-41%;}
 }
 /*.uno_1{
 
@@ -92,11 +103,11 @@
 	100% {;}
 }*/
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .configuracion { padding-bottom: 6px; }
   
   .legenda .d-flex p { font-size: 13px; }
-}
+} */
 
 .frameE{
   width: 30px;
@@ -106,12 +117,12 @@
   position: relative;
   display: inline-block;
 }
-.frameR{
+.frameR {
   width: 30px;
   height: 60px;
   border-style: solid;
   border-width: 3px;
   position: relative;
   display: inline-block;
-  margin-top: 459px;
+  margin-top: 47.5%;
 }
