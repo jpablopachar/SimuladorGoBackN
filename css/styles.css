@@ -1,6 +1,6 @@
-.bg-azul {
-  background-color: #000055;
-}
+.bg-azul { background-color: #000055; }
+
+.configuracion { padding-bottom: 14px; }
 
 .simulador {
   height: 91%;
@@ -12,7 +12,6 @@
   border: 1px solid gray;
   width: 30px;
   height: 20px;
-  margin-left: 8px;
   margin-right: 8px;
 }
 
