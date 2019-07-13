@@ -15,7 +15,20 @@
   margin-right: 8px;
 }
 
-/*#paq_1{
+.paquete {
+  width: 18px;
+  height: 32px;
+  border: 1px solid #000;
+  margin-left: 10px;
+  margin-top: 25px;
+}
+
+/* .config .form-item.disable.disabled {
+  background-color: silver;
+  border-radius: 4px;
+} */
+
+#paq_1{
   position: absolute;
 	background-color: black;
 	width: 30px;
