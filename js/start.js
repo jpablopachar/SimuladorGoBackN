@@ -100,3 +100,30 @@ function activarFormulario() {
 function eliminarPaquete(paquete) {
   paquete.remove;
 }
+
+//Variables
+var tamano_actual = 0;
+var tv = document.getElementById('tamanioVentana');
+var ventana = document.getElementById('send-window');
+
+//Metodo para hacer crecer la ventana
+tv.addEventListener("change", function(){
+  var nunevo_tamano = $("#tamanioVentana").val();
+  diferencia = nunevo_tamano - tamano_actual;
+ // para transformar la diferencia en posi
+   console.log(diferencia);
+  if(diferencia < 0){
+    diferencia = diferencia * -1;
+  }
+
+  if(  nunevo_tamano >tamano_actual ){
+    //alert(tamano_actual + " " + nunevo_tamano +"mas");
+    $("#send-window").width($("#send-window").width()+ (40*diferencia));
+  } else if(nunevo_tamano <tamano_actual){
+    //alert(tamano_actual + " " + nunevo_tamano +"menos");
+    $("#send-window").width($("#send-window").width()- (40*diferencia));
+  }
+  tamano_actual = nunevo_tamano;  
+  //ventana.style.width = ancho + '43px' ;
+  console.log(ventana.style.width + " " + diferencia);
+});
