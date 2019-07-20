@@ -23,125 +23,122 @@
   margin-top: 25px;
 }
 
-/* .config .form-item.disable.disabled {
-  background-color: silver;
-  border-radius: 4px;
-} */
+#svg {
+	cursor: crosshair;
+	position: relative;
+	border: 1px solid black;
+	overflow: hidden;
+}
 
-/*#paq_1{
-  position: absolute;
-	background-color: black;
+div.dscPkg {
+	border: solid 1px black;
 	width: 30px;
-  height: 60px;
-	padding: 0px;
-	margin-left: 0%;
-  margin-top: 0%;
-	color: white;
-	display: none;
-}*/
+}
 
-#paq_1{
+#root {
 	position: absolute;
-	background-color: black;
-	width: 30px;
-  height: 60px;
-	padding: 15px 5px;
-	margin-left: 50%;
-	margin-top: 30%;
-	color: white;
-	display: none;
 }
 
-#paq_2{
-  position: absolute;
-	background-color: black;
-	width: 30px;
-  height: 60px;
-	padding: 15px 5px;
-	margin-left: 50%;
-	margin-top: 30%;
-	color: white;
-	display: none;
+#svg > #root div, #svg canvas {
+	position: absolute;
 }
 
-#paq_3{
-  position: absolute;
-	background-color: black;
-	width: 1.5%;
-	padding: 15px 0px;
-	margin-left: 4%;
-  margin-top: 0%;
-	color: white;
+#svg canvas.window-timer {
+	height: 40px;
+	width: 40px;
+	z-index: 45;
+	margin-left: -20px;
 }
 
-/*animacion css*/
-/*.uno{
-	animation-name: uno;
-	animation-duration: 10500ms;
-}*/
-
-/*@keyframes uno{
-	0% {left:-47.5%; top:-40.3%;}
-	50% {left:-47.5%; top:40.3%;}
-	100% {left:-47.5%; top:-36%;}
-}*/
-
-/*@keyframes uno{
-	0% {left:-47.5%; top:-40.3%;}
-	50% {left:-47.5%; top:40.3%;}
-	100% {left:-47.5%; top:-36%;}
-}*/
-
-.dos{
-	animation-name: dos;
-	animation-duration: 8s;
+#svg div.desc{
+	font-size: 30px;
+	z-index: 10;
+	margin: 10px;
 }
 
-@keyframes dos{
-	0% {left:-46%; top:-40%;}
-	50% {left:-46%; top:45%;}
-	100% {left:-46%; top:-41%;}
+div.desc > div.bottom {
+	bottom: 10px;
 }
 
-.tres{
-	animation-name: tres;
-	animation-duration: 8s;
+.window{
+	border: 1px solid black;
+	background: #a7a5a6;
+	z-index: 41;
 }
 
-@keyframes tres{
-	0% {left:-44%; top:-40%;}
-	50% {left:-44%; top:45%;}
-	100% {left:-44%; top:-41%;}
+.pkg {
+	background: #00adef;
+	border: 1px solid black;
+	width: 16px;
+	height: 30px;
+	z-index: 42;
+	padding: 0px;
+	margin: 0px;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-/*.uno_1{
 
+.pkg.delivered {
+	background: #000055;
+}
+.pkg.confirmed {
+	background: yellow;
+}
+.pkg.ack {
+	background: green;
+}
+.pkg.empty {
+	background: #fff;
 }
 
-@keyframes uno_1{
-	0% {;}
-	100% {;}
-}*/
+@media (min-width: 576px) {
+	#svg {
+		width: 100%;
+		height: 400px;
+	}
 
-/* @media (min-width: 768px) {
-  .configuracion { padding-bottom: 6px; }
-  
-  .legenda .d-flex p { font-size: 13px; }
-} */
-
-.frameE{
-  width: 30px;
-  height: 60px;
-  border-style: solid;
-  border-width: 3px;
-  position: relative;
-  display: inline-block;
+	#svg div.desc{
+		width: 100%;
+		height: 400px;
+	}
 }
-.frameR {
-  width: 30px;
-  height: 60px;
-  border-style: solid;
-  border-width: 3px;
-  position: relative;
-  display: inline-block;
-  margin-top: 47.5%;
+
+@media (min-width: 768px) {
+	#svg {
+		width: 100%;
+		height: 400px;
+	}
+
+	#svg div.desc{
+		width: 100%;
+		height: 400px;
+	}
+}
+
+@media (min-width: 992px) {
+
+	#svg {
+		width: 100%;
+		height: 400px;
+	}
+
+	#svg div.desc{
+		width: 100%;
+		height: 400px;
+	}
+}
+
+@media (min-width: 1200px) {
+	#svg {
+		width: 100%;
+		height: 400px;
+	}
+
+	#svg div.desc{
+		width: 100%;
+		height: 400px;
+	}
 }

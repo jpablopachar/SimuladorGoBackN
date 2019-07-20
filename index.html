@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <title>Simulador Go - Back - N</title>
 </head>
-<body>
-  <header>
+<body onload="init();" class="mobile">
+	<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <img src="images/mario.png" alt="Icono del proyecto" width="35">
       <a class="navbar-brand" href="#">Simulador GBN (Go - Back - N)</a>
@@ -18,195 +19,85 @@
   <main>
     <div class="container-fluid">
       <div class="row" style="height: 93vh;">
-        <div class="order-1 order-md-1 col-md-2 flex-grow-1 bg-warning configuracion">
-          <h3 class="mt-2">Configuración</h3>
-          <form id="form-simulador">
-            <div class="form-group">
-              <label for="tamanioVentana" class="font-weight-bold">Tamaño de ventana: <span id="valorTamanioVentana"></span></label>
-              <input type="range" name="tamanioVentana" class="custom-range" min="1" max="10" step="1" id="tamanioVentana">
-              <small class="form-text text-muted">Establece el tamaño de la ventana para las ventanas</small>
+        <div class="order-1 order-xl-1 col-sm-8 col-lg-9 col-xl-3 flex-grow-1 bg-warning configuracion">
+          <form class="config">
+            <h3 class="mt-2">Configuración</h3>
+            <div class="form-item form-group disable">
+              <label for="senderN" class="font-weight-bold">Tamaño de ventana: <span id="valorTamanioVentana"></span></label>
+              <input type="range" name="senderN" value="5" min="1" max="10" step="1" id="senderN" onchange="contr.setSenderN(this); $('#senderN2').attr('value', this.value);" class="custom-range"/>
+              <!--<input type="text" value="5" min="1" max="10" step="1" id="senderN2" onchange="contr.setSenderN(this);" disabled="disabled" class="form-control" />-->
+              <small>Establece el tamaño de la ventana para las ventanas</small>
             </div>
-            <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Retrazo de extremo a extremo: <span id="valorRetrazoExtremo"></span> ms</label>
-              <input type="range" class="custom-range" min="1000" max="20000" step="500" id="retrazoExtremo">
-              <small class="form-text text-muted">El tiempo que toma un paquete de una estación a la otra</small>
+            <div class="form-item disable">
+              <label for="endToEndDelay" class="font-weight-bold">Retrazo extremo a extremo: <span id="valorRetrazoExtremo"></span> ms</label>
+              <input type="range" value="5000" min="1000" max="20000" step="500" id="endToEndDelay" onchange="contr.setEndToEndDelay(); $('#endToEndDelay2').attr('value', this.value);" class="custom-range" />
+              <!--<input type="text" value="5000" min="1000" max="20000" step="500" id="endToEndDelay2" disabled="disabled" class="form-control" />-->
+              <small>El tiempo que toma un paquete de una estación a la otra</small>
             </div>
-            <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Timeout: <span id="valorTimeout"></span></label>
-              <input type="range" class="custom-range" min="1000" max="30000" step="500" id="timeout">
+            <div class="form-item disable">
+              <label for="timeout" class="font-weight-bold">Timeout: <span id="valorTimeout"></span> ms</label>
+              <input type="range" value="11000" min="1000" max="30000" step="500" id="timeout" onchange="contr.setTimeout(this); $('#timeout2').attr('value', this.value);" class="custom-range"/>
+              <!--<input type="text" value="11000" min="1000" max="30000" step="500" id="timeout2" disabled="disabled" class="form-control" />-->
+              <div class="description"></div>
             </div>
-            <div class="form-group">
-              <label for="customRange3" class="font-weight-bold">Número de paquetes emitidos por minuto: <span id="valorNumeroPaquetes"></span></label>
-              <input type="range" class="custom-range" min="1" max="120" step="1" id="numeroPaquetes">
-              <small id="emailHelp" class="form-text text-muted">El número de paquetes que la capa superior intenta enviar por minuto</small>
+            <div class="form-item">
+              <label for="" class="font-weight-bold">Número de paquetes emitidos por minuto <span id="valorNumeroPaquetes"></span></label>
+              <input type="range" value="60" min="1" max="120" step="1" id="pkgPerMin" onchange="contr.setPkgPerMin(this); $('#pkgPerMin2').attr('value', this.value);" class="custom-range" />
+              <!--<input type="text" value="60" min="1" max="120" step="1" id="pkgPerMin2" disabled="disabled" class="form-control" />-->
+              <small>El número de paquetes que la capa superior intenta enviar por minuto</small>
             </div>
-            <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-success" onclick="start()">Iniciar</button>
+            <div class="d-flex justify-content-center mt-3">
+              <input type="button" class="btn btn-success" onclick="contr.startStop();" id="start" value="Iniciar">
             </div>
           </form>
         </div>
-        <div class="order-3 order-md-2 col-md-8 border">
-          <div class="simulador border border-dark" style="height: 90%" id="svg">
-            <!--<div class="paquetes">
-              <div id="paq_1" class="paquete bg-primary"></div>
-              <div id="paq_2" class="paquete bg-primary"></div>
-            </div>-->
-            <!--<div id="paq_1"></div>
-            <div id="root"></div>-->
-            <div class="d-flex paquetes">
-              <div class="paquete bg-primary"></div>
-              <div id="paq_1" class="paquete bg-warning"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
-              <div class="paquete bg-primary"></div>
+        <div class="order-3 order-xl-2 col-xl-7 py-3 border">
+          <div id="svg" class="simulation">
+            <div id="root">
             </div>
-            <div class="d-flex align-items-end" style="height: 85%">
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-              <div class="paquete"></div>
-            </div>
-          <!--<div class="simulador border border-dark">-->
-            <!--<div id="paq_1"></div>
-            <div id="mov_1"></div>
-            <div id="paq_2"></div>
-            <div id="paq_3"></div>-->
-            <!--<div id="emisor">
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-              <div class="frameE"></div>
-            </div>
-            <div id="desplazamiento"></div>
-            <div id="receptor">
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-              <div class="frameR"></div>
-            </div>-->
-            <!--<div id="enviado"></div>
-            <div id="espacio"></div>
-            <div id="recibido"></div>
-            <div class="swindow"></div>
-            <div class="frame"></div>-->
           </div>
         </div>
-        <div class="order-2 order-md-3 col-md-2 bg-light">
+        <div class="order-2 order-xl-3 col-sm-4 col-lg-3 col-xl-2 bg-light">
           <h3 class="mt-2">Legenda</h3>
-          <section class="legenda row">
-            <div class="d-flex ml-3">
-              <span class="cuadroLegenda bg-white"></span>
-              <p>Aún no se han recibido datos</p>
+            <div class="legend">
+              <section class="legenda row">
+                  <div class="d-flex ml-3">
+                    <span class="cuadroLegenda bg-white"></span>
+                    <p>Aún no se han recibido datos</p>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="d-flex ml-3">
+                    <span class="cuadroLegenda bg-primary"></span>
+                    <p>Datos almacenados en búfer</p>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="d-flex ml-3">
+                    <span class="cuadroLegenda bg-success"></span>
+                    <p>Ack</p>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="d-flex ml-3">
+                    <span class="cuadroLegenda bg-warning"></span>
+                    <p>Transformación confirmada</p>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="d-flex ml-3">
+                    <span class="cuadroLegenda bg-azul"></span>
+                    <p>Los datos se han entregado</p>
+                  </div>
+                </section>
             </div>
-            <div class="w-100"></div>
-            <div class="d-flex ml-3">
-              <span class="cuadroLegenda bg-primary"></span>
-              <p>Datos almacenados en búfer</p>
-            </div>
-            <div class="w-100"></div>
-            <div class="d-flex ml-3">
-              <span class="cuadroLegenda bg-success"></span>
-              <p>Ack</p>
-            </div>
-            <div class="w-100"></div>
-            <div class="d-flex ml-3">
-              <span class="cuadroLegenda bg-warning"></span>
-              <p>Transformación confirmada</p>
-            </div>
-            <div class="w-100"></div>
-            <div class="d-flex ml-3">
-              <span class="cuadroLegenda bg-azul"></span>
-              <p>Los datos se han entregado</p>
-            </div>
-          </section>
         </div>
       </div>
     </div>
   </main>
-  <footer></footer>
-  <script src="js/jquery-1.12.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="js/start.js"></script>
-  <script src="js/global.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/jquery-1.12.5.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/index3.js"></script>
+  <script src="js/global3.js"></script>
+  <script src="js/app3.js"></script>
 </body>
 </html>
